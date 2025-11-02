@@ -62,6 +62,8 @@ pub mod eia {
     /// and then written to `write` while the next
     /// chunk is read concurrently
     /// ```rust
+    /// use copy_double_buffered::eia::copy_double_buffered;
+    /// # embassy_futures::block_on(async {
     /// let mut src = [0u8; 1024 * 4];
     /// // Generate some data
     /// src.iter_mut()
@@ -69,10 +71,11 @@ pub mod eia {
     ///     .for_each(|(i, v)| *v = (i % 255) as u8);
     /// let mut dst: Vec<u8> = Vec::new();
     /// let [mut buf_a, mut buf_b] = [[0u8; 16]; 2];
-    /// eia::copy_double_buffered(&src[..], &mut dst, &mut buf_a[..], &mut buf_b[..])
+    /// copy_double_buffered(&src[..], &mut dst, &mut buf_a[..], &mut buf_b[..])
     ///     .await
     ///     .unwrap();
     /// assert_eq!(&src[..], &dst[..]);
+    /// # });
     /// ```
     pub async fn copy_double_buffered<'a, R, W, E>(
         mut src: R,
@@ -100,8 +103,6 @@ mod tests {
     use std::time::Instant;
 
     use tokio::time::sleep;
-
-    use super::*;
 
     #[tokio::test]
     async fn copy_delayed() {

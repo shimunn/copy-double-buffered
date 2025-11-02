@@ -1,4 +1,4 @@
 [toolchain]
-targets = ["x86_64-unknown-linux-gnu", "x86_64-pc-windows-gnu", "thumbv8m.main-none-eabihf", "thumbv7em-none-eabi", "thumbv7m-none-eabi"]
+targets = ["x86_64-unknown-linux-gnu"]
 components = [ "rust-src", "llvm-tools-preview", "rustc-dev" ]
-channel = "nightly-2025-11-01"
+channel = "nightly-2025-10-01"

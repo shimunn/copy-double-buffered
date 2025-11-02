@@ -3,6 +3,9 @@ name = "copy-double-buffered"
 version = "0.1.0"
 edition = "2024"
 author = "shimun <shimun@shimun.net>"
+description = "Concurrent copy for embedded-io-async"
+license = "MIT"
+repository = "https://github.com/shimunn/copy-double-buffered"
 
 [dependencies]
 embassy-futures = "0.1.2"
